@@ -23,15 +23,12 @@ function App() {
   const handleNextPage = useCallback(
     () =>
       setPageNum((i) => {
-        console.log("INSIDE handleNextPage ", i);
         if (data === null) return 0;
         else {
-          const newPageNum = Math.min(
+          return Math.min(
             i + 1,
             Math.ceil(data.photos.length / imagesPerPage) - 1
           );
-          console.log("newPageNum", newPageNum);
-          return newPageNum;
         }
       }),
     [data]
@@ -40,13 +37,8 @@ function App() {
   const handlePrevPage = useCallback(
     () =>
       setPageNum((i) => {
-        console.log("INSIDE handleNextPage ", i);
         if (data === null) return 0;
-        else {
-          const newPageNum = Math.max(i - 1, 0);
-          console.log("newPageNum", newPageNum);
-          return newPageNum;
-        }
+        else return Math.max(i - 1, 0);
       }),
     [data]
   );
