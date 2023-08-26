@@ -3,7 +3,7 @@ import "./App.css";
 
 // The NASA website cannot give out any API key
 // const apiURL = `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2023-08-01&api_key=DEMO_KEY&page=1`;
-const apiURL = `dataEarlier.json`;
+const apiURL = `dataToday.json`;
 const imagesPerPage = 5;
 
 function App() {
@@ -17,7 +17,8 @@ function App() {
       .catch((err) => console.log("ERROR", err));
   }, []);
 
-  const pageNumMax = data === null ? 0 : Math.ceil(data.photos.length / imagesPerPage) - 1;
+  const pageNumMax =
+    data === null ? 0 : Math.ceil(data.photos.length / imagesPerPage) - 1;
 
   const handleNextPage = useCallback(
     () =>
@@ -87,20 +88,36 @@ function App() {
         </section>
       </main>
 
-    <h2 className="carousel-heading">Curiosity rover images from today</h2>
-      <div className="carousel">
-        {pageNum !== 100 && <button className="prev-button" disabled={pageNum === 0} onClick={handlePrevPage}>&lsaquo;</button>}
-        {data &&
-          data.photos
-            .slice(pageNum * imagesPerPage, (pageNum + 1) * imagesPerPage)
-            .map((e) => <img src={e.img_src} />)}
-        {pageNum !== pageNumMax + 1000 && (
-          <button disabled={pageNum === pageNumMax} onClick={handleNextPage}>&rsaquo;</button>
-        )}
+      <div className="carousel-container">
+        <h2 className="carousel-heading">Curiosity rover images from today</h2>
+        <div className="carousel">
+          <button
+            className="prev-button"
+            disabled={pageNum === 0}
+            onClick={handlePrevPage}
+          >
+            &lsaquo;
+          </button>
+          {data &&
+            data.photos
+              .slice(pageNum * imagesPerPage, (pageNum + 1) * imagesPerPage)
+              .map((e) => (
+                <div className="carousel-image-container">
+                  <img src={e.img_src} />
+                </div>
+              ))}
+          <button disabled={pageNum === pageNumMax} onClick={handleNextPage}>
+            &rsaquo;
+          </button>
+        </div>
+        <div className="page-num-info">
+          {data && (
+            <div>
+              Page {pageNum + 1}/{pageNumMax + 1}
+            </div>
+          )}
+        </div>
       </div>
-      <pre>{JSON.stringify(data?.photos?.length)}</pre>
-      <pre>{JSON.stringify(pageNumMax)}</pre>
-      <pre>{JSON.stringify(data, null, 4)}</pre>
     </div>
   );
 }
