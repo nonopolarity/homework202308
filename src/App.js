@@ -49,7 +49,7 @@ function App() {
       <main>
         <figure className="hero">
           <img src="/images/rover_hero.jpg" />
-          <figcaption>Curiosity rover image</figcaption>
+          <figcaption>Curiosity  rover image</figcaption>
         </figure>
 
         <section className="intro">
