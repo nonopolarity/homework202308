@@ -38,3 +38,42 @@
   border: none;
   border-radius: 8px;
 }
+
+.App .carousel-heading {
+  margin: 32px 0 16px 40px;
+  font-size: 21px;
+}
+
+.App .carousel {
+  display: flex;
+}
+
+.App .carousel img {
+  max-width: 160px;
+  max-height: 160px;
+  margin-right: 20px;
+}
+
+.App .carousel button {
+  height: 160px;
+  font-size: 72px;
+  color: rgb(122 88 47);
+  background-color: #fff;
+  border: none;
+}
+
+.App .carousel button.prev-button {
+  margin: 0 20px 0 40px;
+}
+
+.App .carousel button:hover {
+  background-color: #eee;
+}
+
+.App .carousel button:disabled {
+  opacity: 0.3;
+}
+
+.App .carousel button:disabled:hover {
+  background-color: #fff;
+}
