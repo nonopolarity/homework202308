@@ -1,38 +1,40 @@
-.App {
+.App h1 {
+  margin: 32px 40px 0;
+}
+
+.App main {
+  display: flex;
+  width: 80%;
+}
+
+.App main .hero {
+  width: 45%;
+}
+
+.App main .hero img {
+  width: 100%;
+}
+
+.App main .hero figcaption {
+  font-size: 13px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App main .intro {
+  width: 55%;
+  padding: 0;
+  font-size: 15px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.App main .intro nav {
+  margin-top: 16px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.App main .intro nav button {
+  height: 42px;
+  margin-right: 12px;
+  padding: 0 16px;
+  background-color: rgb(215 204 189);
+  border: none;
+  border-radius: 8px;
 }
