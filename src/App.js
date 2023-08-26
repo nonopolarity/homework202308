@@ -7,7 +7,7 @@ function App() {
       <h1>About the Program</h1>
       <main>
         <figure className="hero">
-          <img src="images/rover_hero.jpg" />
+          <img src="/images/rover_hero.jpg" />
           <figcaption>Curiosity rover image</figcaption>
         </figure>
 
