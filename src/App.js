@@ -48,7 +48,7 @@ function App() {
       <h1>About the Program</h1>
       <main>
         <figure className="hero">
-          <img src="/images/rover_hero.jpg" />
+          <img src="/images/rover_hero.jpg" alt="rover hero image"/>
           <figcaption>Curiosity rover image</figcaption>
         </figure>
 
@@ -94,8 +94,8 @@ function App() {
             data.photos
               .slice(pageNum * imagesPerPage, (pageNum + 1) * imagesPerPage)
               .map((e) => (
-                <div className="carousel-image-container">
-                  <img src={e.img_src} />
+                <div key={e.id} className="carousel-image-container">
+                  <img src={e.img_src} alt={`photo id ${e.id}`} />
                 </div>
               ))}
           <button disabled={pageNum === pageNumMax} onClick={handleNextPage}>
