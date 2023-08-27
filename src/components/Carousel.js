@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState } from "react";
 import "./Carousel.css";
 
 export default function Carousel({ heading, images, imagesPerPage }) {
@@ -7,15 +7,8 @@ export default function Carousel({ heading, images, imagesPerPage }) {
   const pageNumMax =
     images === null ? 0 : Math.ceil(images.length / imagesPerPage) - 1;
 
-  const handleNextPage = useCallback(
-    () => setPageNum((i) => Math.min(i + 1, pageNumMax)),
-    [pageNumMax]
-  );
-
-  const handlePrevPage = useCallback(
-    () => setPageNum((i) => Math.max(i - 1, 0)),
-    []
-  );
+  const handleNextPage = () => setPageNum((i) => Math.min(i + 1, pageNumMax));
+  const handlePrevPage = () => setPageNum((i) => Math.max(i - 1, 0));
 
   return (
     <div className="carousel-container">

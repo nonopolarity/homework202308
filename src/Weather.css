@@ -1,0 +1,12 @@
+.Weather h1 {
+  margin: 32px 40px 0;
+}
+
+.Weather h2 {
+  font-size: 21px;
+  margin: 20px 40px 0;
+}
+
+.Weather button {
+  margin: 20px 12px 0 40px;
+}

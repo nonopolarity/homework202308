@@ -1,0 +1,35 @@
+.Intro h1 {
+  margin: 32px 40px 0;
+}
+
+.Intro main {
+  display: flex;
+  width: 80%;
+}
+
+.Intro main .hero {
+  width: 45%;
+}
+
+.Intro main .hero img {
+  width: 100%;
+}
+
+.Intro main .hero figcaption {
+  font-size: 13px;
+  text-align: center;
+}
+
+.Intro main .intro {
+  width: 55%;
+  padding: 0;
+  font-size: 15px;
+}
+
+.Intro main .intro nav {
+  margin-top: 16px;
+}
+
+.Intro nav button {
+  margin-right: 12px;
+}

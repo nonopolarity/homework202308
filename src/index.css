@@ -3,3 +3,11 @@ body {
   color: #333;
   background-color: #fff;
 }
+
+.nav-button {
+  height: 42px;
+  padding: 0 16px;
+  background-color: rgb(215 204 189);
+  border: none;
+  border-radius: 8px;
+}
