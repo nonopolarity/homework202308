@@ -1,14 +1,14 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
+import Carousel from "./Carousel";
 import "./App.css";
 
 // The NASA website cannot give out any API key
 // const apiURL = `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2023-08-01&api_key=DEMO_KEY&page=1`;
-const apiURL = `dataToday.json`;
+const apiURL = `dataImagesToday.json`;
 const imagesPerPage = 5;
 
 function App() {
   const [data, setData] = useState(null);
-  const [pageNum, setPageNum] = useState(0);
 
   useEffect(() => {
     fetch(apiURL)
@@ -17,38 +17,12 @@ function App() {
       .catch((err) => console.log("ERROR", err));
   }, []);
 
-  const pageNumMax =
-    data === null ? 0 : Math.ceil(data.photos.length / imagesPerPage) - 1;
-
-  const handleNextPage = useCallback(
-    () =>
-      setPageNum((i) => {
-        if (data === null) return 0;
-        else {
-          return Math.min(
-            i + 1,
-            Math.ceil(data.photos.length / imagesPerPage) - 1
-          );
-        }
-      }),
-    [data]
-  );
-
-  const handlePrevPage = useCallback(
-    () =>
-      setPageNum((i) => {
-        if (data === null) return 0;
-        else return Math.max(i - 1, 0);
-      }),
-    [data]
-  );
-
   return (
     <div className="App">
       <h1>About the Program</h1>
       <main>
         <figure className="hero">
-          <img src="/images/rover_hero.jpg" alt="rover hero"/>
+          <img src="/images/rover_hero.jpg" alt="rover hero" />
           <figcaption>Curiosity rover image</figcaption>
         </figure>
 
@@ -80,36 +54,13 @@ function App() {
         </section>
       </main>
 
-      <div className="carousel-container">
-        <h2 className="carousel-heading">Curiosity rover images from today</h2>
-        <div className="carousel">
-          <button
-            className="prev-button"
-            disabled={pageNum === 0}
-            onClick={handlePrevPage}
-          >
-            &lsaquo;
-          </button>
-          {data &&
-            data.photos
-              .slice(pageNum * imagesPerPage, (pageNum + 1) * imagesPerPage)
-              .map((e) => (
-                <div key={e.id} className="carousel-image-container">
-                  <img src={e.img_src} alt={`id ${e.id}`} />
-                </div>
-              ))}
-          <button disabled={pageNum === pageNumMax} onClick={handleNextPage}>
-            &rsaquo;
-          </button>
-        </div>
-        <div className="page-num-info">
-          {data && (
-            <div>
-              Page {pageNum + 1}/{pageNumMax + 1}
-            </div>
-          )}
-        </div>
-      </div>
+      {data && (
+        <Carousel
+          heading="Curiosity rover images from today"
+          images={data.photos.map((e) => ({ url: e.img_src, id: e.id }))}
+          imagesPerPage={imagesPerPage}
+        />
+      )}
     </div>
   );
 }
