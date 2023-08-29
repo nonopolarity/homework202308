@@ -26,7 +26,8 @@ export default function Carousel({ heading, images, imagesPerPage }) {
             .slice(pageNum * imagesPerPage, (pageNum + 1) * imagesPerPage)
             .map((e) => (
               <div key={e.id} className="carousel-image-container">
-                <img src={e.url} alt={`id ${e.id}`} />
+                {/* <img src={e.url} alt={`id ${e.id}`} /> */}
+                <img src={Math.random() > 0.5 ? "images/sample1.jpg" : "images/sample2.jpg"} alt={`id ${e.id}`} />
               </div>
             ))}
         <button disabled={pageNum === pageNumMax} onClick={handleNextPage}>
